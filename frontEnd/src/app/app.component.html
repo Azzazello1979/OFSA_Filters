@@ -34,6 +34,15 @@
           [id]="gender"
         />
       </div>
+
+      <div formArrayName="hobbies">
+        <h3>Your Hobbies added dynamically</h3>
+        <button type="button" (click)="onAddHobby()">Add Hobby</button>
+        <div *ngFor="let hobbyControl of getControls(); let i = index">
+          <input type="text" [formControlName]="i" />
+        </div>
+      </div>
+
       <button type="submit" [disabled]="signupForm.invalid">Submit</button>
     </form>
   </div>
