@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'OFSA Filters Playground';
   genders: string[] = ['male', 'female', 'not sure'];
   signupForm: FormGroup;
@@ -24,6 +24,16 @@ export class AppComponent implements OnInit {
 
   getControls() {
     return (<FormArray>this.signupForm.get('hobbies')).controls;
+  }
+
+  // subscribe to valueChanges and statusChanges
+  ngAfterViewInit() {
+    this.signupForm.valueChanges.subscribe((value) => {
+      //console.log(value);
+    });
+    this.signupForm.statusChanges.subscribe((status) => {
+      console.log(status);
+    });
   }
 
   ngOnInit() {

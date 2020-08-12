@@ -16,18 +16,12 @@
             signupForm.get('userData.username').touched
           "
         >
-          <span
-            *ngIf="
-              signupForm.get('userData.username').errors['required'] &&
-              signupForm.get('userData.username').touched
-            "
-          >
+          <span *ngIf="signupForm.get('userData.username').errors['required']">
             Username is required!</span
           >
           <span
             *ngIf="
-              signupForm.get('userData.username').errors['nameIsForbidden'] &&
-              signupForm.get('userData.username').touched
+              signupForm.get('userData.username').errors['nameIsForbidden']
             "
             >Forbidden username!</span
           >
@@ -35,11 +29,22 @@
 
         <label for="email">Email: </label>
         <input
-          type="email"
+          type="text"
           formControlName="email"
           id="email"
           placeholder="email"
         />
+        <span
+          *ngIf="
+            signupForm.get('userData.email').invalid &&
+            signupForm.get('userData.email').touched
+          "
+          >Invalid email!
+          <span
+            *ngIf="signupForm.get('userData.email').errors['emailIsForbidden']"
+            >Forbidden email!</span
+          >
+        </span>
       </div>
 
       <div class="radios" *ngFor="let gender of genders">
