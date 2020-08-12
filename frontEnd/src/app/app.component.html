@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="theForm">
-    <form [formGroup]="signupForm">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
       <label for="username">Username: </label>
       <input
         type="text"
@@ -24,7 +24,7 @@
           [id]="gender"
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" [disabled]="signupForm.invalid">Submit</button>
     </form>
   </div>
 </div>
