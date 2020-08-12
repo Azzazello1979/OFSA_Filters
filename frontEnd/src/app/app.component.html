@@ -8,14 +8,21 @@
         id="username"
         placeholder="username"
       />
+      <span
+        *ngIf="
+          signupForm.get('username').invalid &&
+          signupForm.get('username').touched
+        "
+        >invalid username!</span
+      >
       <label for="email">Email: </label>
       <input
-        type="text"
+        type="email"
         formControlName="email"
         id="email"
         placeholder="email"
       />
-      <div *ngFor="let gender of genders">
+      <div class="radios" *ngFor="let gender of genders">
         <label [for]="gender">{{ gender }}</label>
         <input
           type="radio"
