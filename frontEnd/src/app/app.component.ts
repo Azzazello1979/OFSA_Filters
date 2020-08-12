@@ -8,14 +8,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = 'OFSA Filters Playground';
-  genders: string[] = ['male', 'female'];
+  genders: string[] = ['male', 'female', 'not sure'];
   signupForm: FormGroup;
 
   ngOnInit() {
     this.signupForm = new FormGroup({
       username: new FormControl(null),
       email: new FormControl(null),
-      gender: new FormControl('male'),
+      gender: new FormControl(null),
     });
   }
 }
