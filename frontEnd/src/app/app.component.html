@@ -1,27 +1,30 @@
 <div class="wrapper">
   <div class="theForm">
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <label for="username">Username: </label>
-      <input
-        type="text"
-        formControlName="username"
-        id="username"
-        placeholder="username"
-      />
-      <span
-        *ngIf="
-          signupForm.get('username').invalid &&
-          signupForm.get('username').touched
-        "
-        >invalid username!</span
-      >
-      <label for="email">Email: </label>
-      <input
-        type="email"
-        formControlName="email"
-        id="email"
-        placeholder="email"
-      />
+      <div formGroupName="userData">
+        <label for="username">Username: </label>
+        <input
+          type="text"
+          formControlName="username"
+          id="username"
+          placeholder="username"
+        />
+        <span
+          *ngIf="
+            signupForm.get('userData.username').invalid &&
+            signupForm.get('userData.username').touched
+          "
+          >invalid username!</span
+        >
+        <label for="email">Email: </label>
+        <input
+          type="email"
+          formControlName="email"
+          id="email"
+          placeholder="email"
+        />
+      </div>
+
       <div class="radios" *ngFor="let gender of genders">
         <label [for]="gender">{{ gender }}</label>
         <input
