@@ -15,6 +15,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     console.log(this.signupForm);
+    //this.signupForm.reset();
   }
 
   onAddHobby() {
@@ -68,7 +69,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
         if (control.value === 'invalid@invalid.com') {
-          reject({ emailIsForbidden: true });
+          resolve({ emailIsForbidden: true });
         } else {
           resolve(null);
         }
@@ -77,3 +78,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     return promise;
   }
 }
+
+/* this.signupForm.setValue({
+  ... set ENTIRE form value to something else
+}); */
+
+/* this.signupForm.patchValue({
+  ... only change a certain value, not whole form
+}) */
+
+/* this.signupForm.reset() */

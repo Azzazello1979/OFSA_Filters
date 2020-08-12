@@ -39,10 +39,16 @@
             signupForm.get('userData.email').invalid &&
             signupForm.get('userData.email').touched
           "
-          >Invalid email!
+        >
           <span
             *ngIf="signupForm.get('userData.email').errors['emailIsForbidden']"
             >Forbidden email!</span
+          >
+          <span *ngIf="signupForm.get('userData.email').errors['required']"
+            >Please provide email!</span
+          >
+          <span *ngIf="signupForm.get('userData.email').errors['email']"
+            >Email is not in correct format!</span
           >
         </span>
       </div>
