@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,11 @@ export class AppComponent implements OnInit {
           Validators.required,
           this.forbiddenNamesValidator.bind(this),
         ]),
-        email: new FormControl(null, [Validators.required, Validators.email]),
+        email: new FormControl(
+          null,
+          [Validators.required, Validators.email],
+          this.asyncEmailValidator
+        ),
       }),
       gender: new FormControl('female'),
       hobbies: new FormArray([]),
@@ -46,5 +51,19 @@ export class AppComponent implements OnInit {
     } else {
       return null;
     }
+  }
+
+  // my custom async validator
+  asyncEmailValidator(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'invalid@invalid.com') {
+          reject({ emailIsForbidden: true });
+        } else {
+          resolve(null);
+        }
+      }, 2000);
+    });
+    return promise;
   }
 }
