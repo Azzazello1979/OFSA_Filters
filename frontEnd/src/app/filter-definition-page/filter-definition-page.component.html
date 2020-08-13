@@ -2,14 +2,27 @@
   <div class="theForm">
     <form [formGroup]="filterDefinitionForm" (ngSubmit)="onSubmit()">
       <div formGroupName="filterDetails">
-        <label for="folderSelect">Folder Name: </label>
-        <select id="folderSelect" formControlName="folderName">
+        <label for="folderName">Folder Name: </label>
+        <select id="folderName" formControlName="folderName">
           <option value="all">all folders</option>
           <option *ngFor="let folder of folders" [value]="folder.id">{{
             folder.name
           }}</option>
         </select>
+        <label for="filterName">*Filter Name: </label>
+        <input type="text" id="filterName" formControlName="filterName" />
+        <label>Access Type: </label>
+        <div *ngFor="let accessType of accessTypeOptions">
+          <label [for]="accessType">{{ accessType }}</label>
+          <input
+            type="radio"
+            [id]="accessType"
+            [value]="accessType"
+            formControlName="accessType"
+          />
+        </div>
       </div>
+      <hr />
       <button type="submit">Submit Total</button>
     </form>
   </div>

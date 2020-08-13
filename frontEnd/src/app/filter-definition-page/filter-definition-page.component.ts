@@ -23,6 +23,8 @@ export class FilterDefinitionPageComponent implements OnInit {
     { id: 3, name: 'folder3' },
   ];
 
+  accessTypeOptions = ['readOnly', 'readWrite'];
+
   onSubmit() {
     console.log(this.filterDefinitionForm);
   }
