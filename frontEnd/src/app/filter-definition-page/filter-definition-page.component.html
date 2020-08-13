@@ -1,1 +1,16 @@
-<p>filter-definition-page works!</p>
+<div class="wrapper">
+  <div class="theForm">
+    <form [formGroup]="filterDefinitionForm" (ngSubmit)="onSubmit()">
+      <div formGroupName="filterDetails">
+        <label for="folderSelect">Folder Name: </label>
+        <select id="folderSelect" formControlName="folderName">
+          <option value="all">all folders</option>
+          <option *ngFor="let folder of folders" [value]="folder.id">{{
+            folder.name
+          }}</option>
+        </select>
+      </div>
+      <button type="submit">Submit Total</button>
+    </form>
+  </div>
+</div>
