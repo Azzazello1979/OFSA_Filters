@@ -60,6 +60,31 @@
           >
         </select>
       </div>
+      <hr />
+      <div formGroupName="dataElementFilters">
+        <label for="dataElementSelection">Data Element Selection: </label>
+        <select
+          formControlName="dataElementSelection"
+          id="dataElementSelection"
+        >
+          <option value="all">all data elements</option>
+          <option
+            *ngFor="let dataElement of dataElements"
+            [value]="dataElement.id"
+            >{{ dataElement.name }}</option
+          >
+        </select>
+        <label for="filterMethod">Filter Method: </label>
+        <select formControlName="filterMethod" id="filterMethod">
+          <option value="all">all filter methods</option>
+          <option
+            *ngFor="let filterMethod of filterMethods"
+            [value]="filterMethod.id"
+            >{{ filterMethod.name }}</option
+          >
+        </select>
+      </div>
+      <hr />
       <button type="submit">Submit Total</button>
     </form>
   </div>

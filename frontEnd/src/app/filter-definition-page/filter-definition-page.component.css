@@ -10,3 +10,7 @@
   border: 1px solid grey;
   border-radius: 10px;
 }
+select,
+input {
+  margin-right: 5px;
+}

@@ -43,6 +43,19 @@ export class FilterDefinitionPageComponent implements OnInit {
     { id: 3, name: 'GoldMines' },
   ];
 
+  dataElements = [
+    { id: 1, name: 'data element 1' },
+    { id: 2, name: 'data element 2' },
+    { id: 3, name: 'data element 3' },
+  ];
+
+  filterMethods = [
+    { id: 1, name: 'Specific Values' },
+    { id: 2, name: 'Range' },
+    { id: 3, name: 'Other Data Element' },
+    { id: 4, name: 'Expressions' },
+  ];
+
   onSubmit() {
     console.log(this.filterDefinitionForm);
   }
@@ -61,6 +74,10 @@ export class FilterDefinitionPageComponent implements OnInit {
       hierarchyFilters: new FormGroup({
         dimension: new FormControl(),
         hierarchy: new FormControl(),
+      }),
+      dataElementFilters: new FormGroup({
+        dataElementSelection: new FormControl(),
+        filterMethod: new FormControl(),
       }),
     });
   }
