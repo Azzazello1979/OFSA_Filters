@@ -33,7 +33,7 @@
       <div formGroupName="filterTypeSelection" class="sharedForm">
         <label for="filterType">Filter Type: </label>
         <select id="filterType" formControlName="filterType">
-          <option value="all" selected>all filters</option>
+          <option value="none" selected>none</option>
           <option
             *ngFor="let filterType of filterTypes"
             [value]="filterType.id"
@@ -42,7 +42,11 @@
         </select>
       </div>
       <hr />
-      <div formGroupName="hierarchyFilters" class="hierarchyForm">
+      <div
+        *ngIf="activeSpecificForm.filterType === '1'"
+        formGroupName="hierarchyFilters"
+        class="hierarchyForm"
+      >
         <label for="dimension">Dimension: </label>
         <select formControlName="dimension" id="dimension">
           <option value="all">all dimensions</option>
@@ -61,7 +65,11 @@
         </select>
       </div>
       <hr />
-      <div formGroupName="dataElementFilters" class="dataElementForm">
+      <div
+        *ngIf="activeSpecificForm.filterType === '2'"
+        formGroupName="dataElementFilters"
+        class="dataElementForm"
+      >
         <label for="dataElementSelection">Data Element Selection: </label>
         <select
           formControlName="dataElementSelection"

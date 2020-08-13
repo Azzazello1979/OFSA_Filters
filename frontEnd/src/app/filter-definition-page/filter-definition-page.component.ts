@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './filter-definition-page.component.html',
   styleUrls: ['./filter-definition-page.component.css'],
 })
-export class FilterDefinitionPageComponent implements OnInit {
+export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
   /* overall */
   filterDefinitionForm: FormGroup;
   /* shared */
@@ -16,6 +16,7 @@ export class FilterDefinitionPageComponent implements OnInit {
   hierarchyFilters: FormGroup;
   dataElementFilters: FormGroup;
   groupfilters: FormGroup;
+  activeSpecificForm = { filterType: 'none' }; // {filterType: "2"}
 
   folders = [
     { id: 1, name: 'folder1' },
@@ -58,6 +59,19 @@ export class FilterDefinitionPageComponent implements OnInit {
 
   onSubmit() {
     console.log(this.filterDefinitionForm);
+  }
+
+  selectActiveSpecificForm(formObj) {
+    this.activeSpecificForm = { ...formObj };
+    console.log(this.activeSpecificForm.filterType);
+  }
+
+  ngAfterViewInit() {
+    this.filterDefinitionForm.controls.filterTypeSelection.valueChanges.subscribe(
+      (news) => {
+        this.selectActiveSpecificForm(news);
+      }
+    );
   }
 
   ngOnInit(): void {
