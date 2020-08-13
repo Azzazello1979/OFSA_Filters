@@ -97,7 +97,17 @@
           *ngIf="dataElementFilterMethod.filterMethod === '1'"
           class="dataElementForm-specificValuesForm"
         >
-          <h3>Specific Values:</h3>
+          <p>Specific Values:</p>
+          <!-- dataElementFilter-specificValuesFilter-Form -->
+          <button (click)="onAddSpecificValue()">Add</button>
+          <div
+            *ngFor="
+              let specificControl of getSpecificValueControls();
+              let i = index
+            "
+          >
+            <input type="text" [formControlName]="i" />
+          </div>
         </div>
       </div>
       <hr />

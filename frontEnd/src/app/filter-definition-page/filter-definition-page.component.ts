@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-filter-definition-page',
@@ -65,6 +65,30 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
     console.log(this.filterDefinitionForm);
   }
 
+  getSpecificValueControls() {
+    return (<FormArray>(
+      this.filterDefinitionForm.get(
+        'dataElementFilters.specificValuesForm.specificValues'
+      )
+    )).controls;
+  }
+
+  onAddSpecificValue() {
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>(
+      this.filterDefinitionForm.get(
+        'dataElementFilters.specificValuesForm.specificValues'
+      )
+    )).push(control);
+    console.log(
+      <FormArray>(
+        this.filterDefinitionForm.get(
+          'dataElementFilters.specificValuesForm.specificValues'
+        ).value
+      )
+    );
+  }
+
   ngAfterViewInit() {
     this.filterDefinitionForm.controls.filterTypeSelection.valueChanges.subscribe(
       (news) => {
@@ -96,7 +120,9 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
       dataElementFilters: new FormGroup({
         dataElementSelection: new FormControl(),
         filterMethod: new FormControl(),
-        specificValuesForm: new FormGroup({}),
+        specificValuesForm: new FormGroup({
+          specificValues: new FormArray([]),
+        }),
       }),
     });
   }
