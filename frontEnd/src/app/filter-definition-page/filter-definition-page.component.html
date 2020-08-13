@@ -43,8 +43,8 @@
       </div>
       <hr />
       <div
-        *ngIf="activeSpecificForm.filterType === '1'"
         formGroupName="hierarchyFilters"
+        *ngIf="activeSpecificForm.filterType === '1'"
         class="hierarchyForm"
       >
         <label for="dimension">Dimension: </label>
@@ -66,8 +66,8 @@
       </div>
       <hr />
       <div
-        *ngIf="activeSpecificForm.filterType === '2'"
         formGroupName="dataElementFilters"
+        *ngIf="activeSpecificForm.filterType === '2'"
         class="dataElementForm"
       >
         <label for="dataElementSelection">Data Element Selection: </label>
@@ -84,13 +84,21 @@
         </select>
         <label for="filterMethod">Filter Method: </label>
         <select formControlName="filterMethod" id="filterMethod">
-          <option value="all">all filter methods</option>
+          <option value="none">none</option>
           <option
-            *ngFor="let filterMethod of filterMethods"
+            *ngFor="let filterMethod of dataElementfilterMethods"
             [value]="filterMethod.id"
             >{{ filterMethod.name }}</option
           >
         </select>
+        <hr />
+        <div
+          formGroupName="specificValuesForm"
+          *ngIf="dataElementFilterMethod.filterMethod === '1'"
+          class="dataElementForm-specificValuesForm"
+        >
+          <h3>Specific Values:</h3>
+        </div>
       </div>
       <hr />
       <button type="submit">Submit Total</button>

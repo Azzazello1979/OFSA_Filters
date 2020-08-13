@@ -17,6 +17,10 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
   dataElementFilters: FormGroup;
   groupfilters: FormGroup;
   activeSpecificForm = { filterType: 'none' }; // {filterType: "2"}
+  dataElementFilterMethod = {
+    dataElementSelection: null,
+    filterMethod: 'none',
+  }; // {dataElementSelection: null, filterMethod: 'none'}
 
   folders = [
     { id: 1, name: 'folder1' },
@@ -50,7 +54,7 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
     { id: 3, name: 'data element 3' },
   ];
 
-  filterMethods = [
+  dataElementfilterMethods = [
     { id: 1, name: 'Specific Values' },
     { id: 2, name: 'Range' },
     { id: 3, name: 'Other Data Element' },
@@ -61,15 +65,15 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
     console.log(this.filterDefinitionForm);
   }
 
-  selectActiveSpecificForm(formObj) {
-    this.activeSpecificForm = { ...formObj };
-    console.log(this.activeSpecificForm.filterType);
-  }
-
   ngAfterViewInit() {
     this.filterDefinitionForm.controls.filterTypeSelection.valueChanges.subscribe(
       (news) => {
-        this.selectActiveSpecificForm(news);
+        this.activeSpecificForm = { ...news };
+      }
+    );
+    this.filterDefinitionForm.controls.dataElementFilters.valueChanges.subscribe(
+      (news) => {
+        this.dataElementFilterMethod = { ...news };
       }
     );
   }
@@ -92,6 +96,7 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
       dataElementFilters: new FormGroup({
         dataElementSelection: new FormControl(),
         filterMethod: new FormControl(),
+        specificValuesForm: new FormGroup({}),
       }),
     });
   }
