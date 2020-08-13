@@ -1,4 +1,11 @@
-<div class="wrapper">
+<button (click)="toggleTestingPage()">toggle testing page</button>
+
+<div class="wrapperReal" *ngIf="!testingPageVisible">
+  <app-filter-definition-page></app-filter-definition-page>
+</div>
+
+<!-- testing page -->
+<div class="wrapper" *ngIf="testingPageVisible">
   <div class="theForm">
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
       <div formGroupName="userData">
