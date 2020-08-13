@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="theForm">
     <form [formGroup]="filterDefinitionForm" (ngSubmit)="onSubmit()">
-      <div formGroupName="filterDetails">
+      <div formGroupName="filterDetails" class="sharedForm">
         <label for="folderName">Folder Name: </label>
         <select id="folderName" formControlName="folderName">
           <option value="all" selected>all folders</option>
@@ -30,7 +30,7 @@
         ></textarea>
       </div>
       <hr />
-      <div formGroupName="filterTypeSelection">
+      <div formGroupName="filterTypeSelection" class="sharedForm">
         <label for="filterType">Filter Type: </label>
         <select id="filterType" formControlName="filterType">
           <option value="all" selected>all filters</option>
@@ -42,7 +42,7 @@
         </select>
       </div>
       <hr />
-      <div formGroupName="hierarchyFilters">
+      <div formGroupName="hierarchyFilters" class="hierarchyForm">
         <label for="dimension">Dimension: </label>
         <select formControlName="dimension" id="dimension">
           <option value="all">all dimensions</option>
@@ -61,7 +61,7 @@
         </select>
       </div>
       <hr />
-      <div formGroupName="dataElementFilters">
+      <div formGroupName="dataElementFilters" class="dataElementForm">
         <label for="dataElementSelection">Data Element Selection: </label>
         <select
           formControlName="dataElementSelection"

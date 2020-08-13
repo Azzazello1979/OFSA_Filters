@@ -6,11 +6,21 @@
   align-items: center;
 }
 .theForm {
-  padding: 20px;
   border: 1px solid grey;
-  border-radius: 10px;
 }
 select,
 input {
   margin-right: 5px;
+}
+.sharedForm {
+  padding: 5px;
+  background: lightblue;
+}
+.hierarchyForm {
+  padding: 5px;
+  background: lightgreen;
+}
+.dataElementForm {
+  padding: 5px;
+  background: lightpink;
 }
