@@ -4,7 +4,7 @@
       <div formGroupName="filterDetails">
         <label for="folderName">Folder Name: </label>
         <select id="folderName" formControlName="folderName">
-          <option value="all">all folders</option>
+          <option value="all" selected>all folders</option>
           <option *ngFor="let folder of folders" [value]="folder.id">{{
             folder.name
           }}</option>
@@ -21,8 +21,45 @@
             formControlName="accessType"
           />
         </div>
+        <label for="description">Description: </label>
+        <textarea
+          id="description"
+          cols="30"
+          rows="10"
+          formControlName="description"
+        ></textarea>
       </div>
       <hr />
+      <div formGroupName="filterTypeSelection">
+        <label for="filterType">Filter Type: </label>
+        <select id="filterType" formControlName="filterType">
+          <option value="all" selected>all filters</option>
+          <option
+            *ngFor="let filterType of filterTypes"
+            [value]="filterType.id"
+            >{{ filterType.name }}</option
+          >
+        </select>
+      </div>
+      <hr />
+      <div formGroupName="hierarchyFilters">
+        <label for="dimension">Dimension: </label>
+        <select formControlName="dimension" id="dimension">
+          <option value="all">all dimensions</option>
+          <option *ngFor="let dimension of dimensions" [value]="dimension.id">{{
+            dimension.name
+          }}</option>
+        </select>
+        <label for="hierarchy">Hierarchy: </label>
+        <select formControlName="hierarchy" id="hierarchy">
+          <option value="all">all hierarchies</option>
+          <option
+            *ngFor="let hierarchy of hierarchies"
+            [value]="hierarchy.id"
+            >{{ hierarchy.name }}</option
+          >
+        </select>
+      </div>
       <button type="submit">Submit Total</button>
     </form>
   </div>
