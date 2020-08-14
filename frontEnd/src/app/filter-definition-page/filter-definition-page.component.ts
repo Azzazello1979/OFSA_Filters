@@ -125,6 +125,7 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.arrayForm = new FormGroup({
+      controlName: new FormControl(),
       specialControls: new FormArray([]),
     });
 
