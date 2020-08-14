@@ -121,11 +121,19 @@
     <form [formGroup]="arrayForm" (ngSubmit)="onArrayFormSubmit()">
       <div class="specialControls" formArrayName="specialControls">
         <p>Special Controls:</p>
-        <input
+        <select formControlName="select" (change)="updateControlType($event)">
+          <option
+            *ngFor="let inputControlOption of inputControlOptions"
+            [value]="inputControlOption"
+            >{{ inputControlOption }}</option
+          >
+        </select>
+
+        <!-- <input
           type="text"
           [(ngModel)]="controlType"
           [ngModelOptions]="{ standalone: true }"
-        />
+        /> -->
 
         <button type="button" (click)="addSpecialControls()">
           Add

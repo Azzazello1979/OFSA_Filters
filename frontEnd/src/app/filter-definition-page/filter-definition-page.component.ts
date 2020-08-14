@@ -64,6 +64,12 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
     { id: 3, name: 'Other Data Element' },
     { id: 4, name: 'Expressions' },
   ];
+  inputControlOptions = ['date', 'range', 'color', 'password', 'text'];
+
+  updateControlType(e) {
+    //console.log(e.target.value);
+    this.controlType = e.target.value;
+  }
 
   onArrayFormSubmit() {
     console.log(this.arrayForm);
@@ -127,6 +133,7 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.arrayForm = new FormGroup({
+      select: new FormControl(),
       specialControls: new FormArray([]),
     });
 
