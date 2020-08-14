@@ -81,11 +81,11 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
       )
     )).push(control);
     console.log(
-      <FormArray>(
+      (<FormArray>(
         this.filterDefinitionForm.get(
           'dataElementFilters.specificValuesForm.specificValues'
-        ).value
-      )
+        )
+      )).controls
     );
   }
 
@@ -98,6 +98,7 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
     this.filterDefinitionForm.controls.dataElementFilters.valueChanges.subscribe(
       (news) => {
         this.dataElementFilterMethod = { ...news };
+        console.log(this.dataElementFilterMethod);
       }
     );
   }
