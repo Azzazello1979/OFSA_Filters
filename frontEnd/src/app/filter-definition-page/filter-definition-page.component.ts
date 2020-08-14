@@ -78,9 +78,8 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
     this.controlTypes.push(this.controlType);
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.arrayForm.get('specialControls')).push(control);
-    console.log(
-      'length of specialControls array: ' + this.getSpecialControls().length
-    );
+    this.controlType = '';
+    console.log(this.getSpecialControls().length);
   }
 
   getSpecialControls() {
@@ -128,7 +127,6 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.arrayForm = new FormGroup({
-      controlName: new FormControl(),
       specialControls: new FormArray([]),
     });
 
