@@ -121,7 +121,7 @@
     <form [formGroup]="arrayForm" (ngSubmit)="onArrayFormSubmit()">
       <div class="specialControls" formArrayName="specialControls">
         <p>Special Controls:</p>
-        <select formControlName="select" (change)="updateControlType($event)">
+        <select (change)="updateControlType($event)">
           <option
             *ngFor="let inputControlOption of inputControlOptions"
             [value]="inputControlOption"

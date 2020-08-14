@@ -64,10 +64,9 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
     { id: 3, name: 'Other Data Element' },
     { id: 4, name: 'Expressions' },
   ];
-  inputControlOptions = ['date', 'range', 'color', 'password', 'text'];
+  inputControlOptions = ['', 'date', 'range', 'color', 'password', 'text'];
 
   updateControlType(e) {
-    //console.log(e.target.value);
     this.controlType = e.target.value;
   }
 
@@ -81,11 +80,13 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
 
   // ----------------- arrayForm starts
   addSpecialControls() {
-    this.controlTypes.push(this.controlType);
-    const control = new FormControl(null, Validators.required);
-    (<FormArray>this.arrayForm.get('specialControls')).push(control);
-    this.controlType = '';
-    console.log(this.getSpecialControls().length);
+    if (this.controlType !== '') {
+      this.controlTypes.push(this.controlType);
+      const control = new FormControl(null, Validators.required);
+      (<FormArray>this.arrayForm.get('specialControls')).push(control);
+      this.controlType = '';
+      //console.log(this.getSpecialControls().length);
+    }
   }
 
   getSpecialControls() {
