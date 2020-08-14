@@ -121,9 +121,19 @@
     <form [formGroup]="arrayForm" (ngSubmit)="onArrayFormSubmit()">
       <div class="specialControls" formArrayName="specialControls">
         <p>Special Controls:</p>
-        <button type="button" (click)="addSpecialControls()">Add</button>
+        <input
+          type="text"
+          [(ngModel)]="controlType"
+          [ngModelOptions]="{ standalone: true }"
+        /><button type="button" (click)="addSpecialControls()">
+          Add
+        </button>
         <div *ngFor="let special of getSpecialControls(); let i = index">
           <input type="text" id="i" [formControlName]="i" />
+        </div>
+        <hr />
+        <div *ngFor="let inputControl of controlTypes; let i = index">
+          <input [type]="inputControl" [formControlName]="i" />
         </div>
       </div>
       <button type="submit">Submit Array Form</button>

@@ -7,6 +7,8 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
   styleUrls: ['./filter-definition-page.component.css'],
 })
 export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
+  controlType: string = '';
+  controlTypes: string[] = [];
   /* testing formArray */
   arrayForm: FormGroup;
   /* overall */
@@ -73,6 +75,7 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
 
   // ----------------- arrayForm starts
   addSpecialControls() {
+    this.controlTypes.push(this.controlType);
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.arrayForm.get('specialControls')).push(control);
   }
