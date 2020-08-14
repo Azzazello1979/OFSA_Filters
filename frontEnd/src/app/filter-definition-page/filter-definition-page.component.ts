@@ -7,6 +7,8 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
   styleUrls: ['./filter-definition-page.component.css'],
 })
 export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
+  /* testing formArray */
+  arrayForm: FormGroup;
   /* overall */
   filterDefinitionForm: FormGroup;
   /* shared */
@@ -61,9 +63,24 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
     { id: 4, name: 'Expressions' },
   ];
 
+  onArrayFormSubmit() {
+    console.log(this.arrayForm);
+  }
+
   onSubmit() {
     console.log(this.filterDefinitionForm);
   }
+
+  // ----------------- arrayForm starts
+  addSpecialControls() {
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.arrayForm.get('specialControls')).push(control);
+  }
+
+  getSpecialControls() {
+    return (<FormArray>this.arrayForm.get('specialControls')).controls;
+  }
+  // ----------------- arrayForm ends
 
   getSpecificValueControls() {
     return (<FormArray>(
@@ -104,6 +121,10 @@ export class FilterDefinitionPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.arrayForm = new FormGroup({
+      specialControls: new FormArray([]),
+    });
+
     this.filterDefinitionForm = new FormGroup({
       filterDetails: new FormGroup({
         folderName: new FormControl(),

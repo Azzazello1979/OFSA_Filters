@@ -116,4 +116,17 @@
       <button type="submit">Submit Total</button>
     </form>
   </div>
+
+  <div class="arrayForm">
+    <form [formGroup]="arrayForm" (ngSubmit)="onArrayFormSubmit()">
+      <div class="specialControls" formArrayName="specialControls">
+        <p>Special Controls:</p>
+        <button type="button" (click)="addSpecialControls()">Add</button>
+        <div *ngFor="let special of getSpecialControls(); let i = index">
+          <input type="text" id="i" [formControlName]="i" />
+        </div>
+      </div>
+      <button type="submit">Submit Array Form</button>
+    </form>
+  </div>
 </div>
