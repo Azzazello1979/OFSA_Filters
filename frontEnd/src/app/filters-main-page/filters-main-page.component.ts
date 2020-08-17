@@ -74,6 +74,30 @@ export class FiltersMainPageComponent implements OnInit {
       modificationDate: '2020-01-01',
       modifiedBy: 'FitzPatrik',
     },
+    {
+      id: 6,
+      name: 'Filter-6',
+      folder: 'Folder-5',
+      type: 'Data Element',
+      modificationDate: '2020-01-01',
+      modifiedBy: 'Jhonny',
+    },
+    {
+      id: 7,
+      name: 'Filter-7',
+      folder: 'Folder-2',
+      type: 'Data Element',
+      modificationDate: '2020-01-01',
+      modifiedBy: 'Sarah',
+    },
+    {
+      id: 8,
+      name: 'Filter-8',
+      folder: 'Folder-1',
+      type: 'Group',
+      modificationDate: '2020-01-01',
+      modifiedBy: 'Jenkins',
+    },
   ];
 
   displayedColumns: string[] = [
