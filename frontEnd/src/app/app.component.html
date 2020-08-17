@@ -1,84 +1,97 @@
 <button (click)="toggleTestingPage()">toggle testing page</button>
+<button (click)="filtersMainPageToggle()">filters main page toggle</button>
 
-<div class="wrapperReal" *ngIf="!testingPageVisible">
-  <app-filter-definition-page></app-filter-definition-page>
+<!-- filters main page demo -->
+<div class="filtersMainPageWrapper" *ngIf="filtersMainPageActive">
+  <app-filters-main-page></app-filters-main-page>
 </div>
 
-<!-- testing page -->
-<div class="wrapper" *ngIf="testingPageVisible">
-  <div class="theForm">
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <div formGroupName="userData">
-        <label for="username">Username: </label>
-        <input
-          type="text"
-          formControlName="username"
-          id="username"
-          placeholder="username"
-        />
+<!-- PRACTICE STUFF -->
+<div *ngIf="!filtersMainPageActive">
+  <div class="wrapperReal" *ngIf="!testingPageVisible">
+    <app-filter-definition-page></app-filter-definition-page>
+  </div>
 
-        <span
-          *ngIf="
-            signupForm.get('userData.username').invalid &&
-            signupForm.get('userData.username').touched
-          "
-        >
-          <span *ngIf="signupForm.get('userData.username').errors['required']">
-            Username is required!</span
-          >
+  <!-- testing page -->
+  <div class="wrapper" *ngIf="testingPageVisible">
+    <div class="theForm">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="userData">
+          <label for="username">Username: </label>
+          <input
+            type="text"
+            formControlName="username"
+            id="username"
+            placeholder="username"
+          />
+
           <span
             *ngIf="
-              signupForm.get('userData.username').errors['nameIsForbidden']
+              signupForm.get('userData.username').invalid &&
+              signupForm.get('userData.username').touched
             "
-            >Forbidden username!</span
           >
-        </span>
+            <span
+              *ngIf="signupForm.get('userData.username').errors['required']"
+            >
+              Username is required!</span
+            >
+            <span
+              *ngIf="
+                signupForm.get('userData.username').errors['nameIsForbidden']
+              "
+              >Forbidden username!</span
+            >
+          </span>
 
-        <label for="email">Email: </label>
-        <input
-          type="text"
-          formControlName="email"
-          id="email"
-          placeholder="email"
-        />
-        <span
-          *ngIf="
-            signupForm.get('userData.email').invalid &&
-            signupForm.get('userData.email').touched
-          "
-        >
+          <label for="email">Email: </label>
+          <input
+            type="text"
+            formControlName="email"
+            id="email"
+            placeholder="email"
+          />
           <span
-            *ngIf="signupForm.get('userData.email').errors['emailIsForbidden']"
-            >Forbidden email!</span
+            *ngIf="
+              signupForm.get('userData.email').invalid &&
+              signupForm.get('userData.email').touched
+            "
           >
-          <span *ngIf="signupForm.get('userData.email').errors['required']"
-            >Please provide email!</span
-          >
-          <span *ngIf="signupForm.get('userData.email').errors['email']"
-            >Email is not in correct format!</span
-          >
-        </span>
-      </div>
-
-      <div class="radios" *ngFor="let gender of genders">
-        <label [for]="gender">{{ gender }}</label>
-        <input
-          type="radio"
-          formControlName="gender"
-          [value]="gender"
-          [id]="gender"
-        />
-      </div>
-
-      <div formArrayName="hobbies">
-        <h3>Your Hobbies added dynamically</h3>
-        <button type="button" (click)="onAddHobby()">Add Hobby</button>
-        <div *ngFor="let hobbyControl of getControls(); let i = index">
-          <input type="text" [formControlName]="i" />
+            <span
+              *ngIf="
+                signupForm.get('userData.email').errors['emailIsForbidden']
+              "
+              >Forbidden email!</span
+            >
+            <span *ngIf="signupForm.get('userData.email').errors['required']"
+              >Please provide email!</span
+            >
+            <span *ngIf="signupForm.get('userData.email').errors['email']"
+              >Email is not in correct format!</span
+            >
+          </span>
         </div>
-      </div>
 
-      <button type="submit">Submit</button>
-    </form>
+        <div class="radios" *ngFor="let gender of genders">
+          <label [for]="gender">{{ gender }}</label>
+          <input
+            type="radio"
+            formControlName="gender"
+            [value]="gender"
+            [id]="gender"
+          />
+        </div>
+
+        <div formArrayName="hobbies">
+          <h3>Your Hobbies added dynamically</h3>
+          <button type="button" (click)="onAddHobby()">Add Hobby</button>
+          <div *ngFor="let hobbyControl of getControls(); let i = index">
+            <input type="text" [formControlName]="i" />
+          </div>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </div>
 </div>

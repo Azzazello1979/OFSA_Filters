@@ -8,12 +8,16 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  filtersMainPageActive: boolean = false;
   testingPageVisible: boolean = false;
-
   title = 'OFSA Filters Playground';
   genders: string[] = ['male', 'female', 'not sure'];
   signupForm: FormGroup;
   forbiddenNames: string[] = ['Koko', 'Poko', 'Moko'];
+
+  filtersMainPageToggle() {
+    this.filtersMainPageActive = !this.filtersMainPageActive;
+  }
 
   toggleTestingPage() {
     this.testingPageVisible = !this.testingPageVisible;
