@@ -77,6 +77,7 @@ export class FiltersMainPageComponent implements OnInit {
   ];
 
   displayedColumns: string[] = [
+    'select',
     'name',
     'folder',
     'type',

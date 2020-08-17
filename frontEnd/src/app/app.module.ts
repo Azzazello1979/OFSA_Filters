@@ -10,6 +10,7 @@ import { FiltersMainPageComponent } from './filters-main-page/filters-main-page.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     BrowserAnimationsModule,
     MatTableModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
