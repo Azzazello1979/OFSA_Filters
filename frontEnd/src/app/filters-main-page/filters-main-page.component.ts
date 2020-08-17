@@ -149,7 +149,8 @@ export class FiltersMainPageComponent implements OnInit {
     this.filteredFilters = this.FILTER_TABLE_DATA.filter((record) =>
       record.name.match(new RegExp(this.currentSearchText, 'i'))
     );
-    console.log(this.filteredFilters);
+    // console.log(this.filteredFilters);
+    this.dataSource.data = [...this.filteredFilters];
   }
 
   onFiltersSearchFormSubmit() {
