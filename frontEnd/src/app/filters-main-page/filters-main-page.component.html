@@ -21,7 +21,12 @@
       </select>
       <!-- -->
       <label for="filterName">Filter Name: </label>
-      <input type="text" formControlName="filterName" id="filterName" />
+      <input
+        type="text"
+        formControlName="filterName"
+        id="filterName"
+        (keyup)="onFilterNameInput($event)"
+      />
       <!-- -->
       <button type="submit">Submit Search</button>
     </form>

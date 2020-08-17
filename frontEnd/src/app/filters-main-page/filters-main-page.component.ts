@@ -18,6 +18,8 @@ export interface FilterRecord {
   styleUrls: ['./filters-main-page.component.css'],
 })
 export class FiltersMainPageComponent implements OnInit {
+  currentSearchText: string = '';
+  filteredFilters: FilterRecord[] = [];
   filtersSearchForm: FormGroup;
   folders = [
     { id: 1, name: 'Folder-1' },
@@ -140,11 +142,25 @@ export class FiltersMainPageComponent implements OnInit {
 
   /* NG MATERIAL DATA TABLE IMPORTS END ***************************************************/
 
+  onFilterNameInput(e) {
+    // filter filters by filter name
+    // console.log(e.target.value);
+    this.currentSearchText = e.target.value;
+    this.filteredFilters = this.FILTER_TABLE_DATA.filter((record) =>
+      record.name.match(new RegExp(this.currentSearchText, 'i'))
+    );
+    console.log(this.filteredFilters);
+  }
+
   onFiltersSearchFormSubmit() {
     console.log(this.filtersSearchForm);
   }
 
   ngOnInit() {
+    this.selection.changed.subscribe((news) => {
+      console.log(this.selection);
+    });
+
     this.filtersSearchForm = new FormGroup({
       folderName: new FormControl(),
       filterType: new FormControl(),
