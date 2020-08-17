@@ -7,8 +7,12 @@
     >
       <!-- -->
       <label for="folderName">Folder Name: </label>
-      <select formControlName="folderName" id="folderName">
-        <option *ngFor="let folder of folders" [value]="folder.id">{{
+      <select
+        formControlName="folderName"
+        id="folderName"
+        (change)="onFolderSelect($event)"
+      >
+        <option *ngFor="let folder of folders" [value]="folder.name">{{
           folder.name
         }}</option>
       </select>
@@ -32,7 +36,7 @@
         (keyup)="onFilterNameInput($event)"
       />
       <!-- -->
-      <button type="submit">Submit Search</button>
+      <!-- <button type="submit">Submit Search</button> -->
     </form>
   </div>
   <!-- DATA TABLE STARTS ************************************************************************* -->

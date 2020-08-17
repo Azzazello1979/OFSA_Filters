@@ -22,11 +22,11 @@ export class FiltersMainPageComponent implements OnInit {
   filtersSearchForm: FormGroup;
   folders = [
     { id: 0, name: 'all' },
-    { id: 1, name: 'Folder-1' },
-    { id: 2, name: 'Folder-2' },
-    { id: 3, name: 'Folder-3' },
-    { id: 4, name: 'Folder-4' },
-    { id: 5, name: 'Folder-5' },
+    { id: 1, name: 'Cheeses' },
+    { id: 2, name: 'Breads' },
+    { id: 3, name: 'Cocktails' },
+    { id: 4, name: 'Wine' },
+    { id: 5, name: 'Pasta' },
   ];
 
   filterType = [
@@ -39,64 +39,64 @@ export class FiltersMainPageComponent implements OnInit {
   FILTER_TABLE_DATA = [
     {
       id: 1,
-      name: 'Filter-1',
-      folder: 'Folder-2',
+      name: 'Camembert-filter',
+      folder: 'Cheeses',
       type: 'Hierarchy',
       modificationDate: '2020-01-01',
-      modifiedBy: 'Gustavo',
+      modifiedBy: 'Mr White',
     },
     {
       id: 2,
-      name: 'Filter-2',
-      folder: 'Folder-2',
+      name: 'Baguette-filter',
+      folder: 'Breads',
       type: 'Hierarchy',
       modificationDate: '2020-01-01',
       modifiedBy: 'Karlson',
     },
     {
       id: 3,
-      name: 'Filter-3',
-      folder: 'Folder-2',
+      name: 'Fociacca-filter',
+      folder: 'Breads',
       type: 'Data Element',
       modificationDate: '2020-01-01',
       modifiedBy: 'Klaus',
     },
     {
       id: 4,
-      name: 'Filter-4',
-      folder: 'Folder-1',
+      name: 'Velteliner-filter',
+      folder: 'Wine',
       type: 'Group',
       modificationDate: '2020-01-01',
       modifiedBy: 'Heimann',
     },
     {
       id: 5,
-      name: 'Filter-5',
-      folder: 'Folder-3',
+      name: 'Old-Fashioned-filter',
+      folder: 'Cocktails',
       type: 'Hierarchy',
       modificationDate: '2020-01-01',
       modifiedBy: 'FitzPatrik',
     },
     {
       id: 6,
-      name: 'Filter-6',
-      folder: 'Folder-5',
+      name: 'Blaufrankisch-filter',
+      folder: 'Wine',
       type: 'Data Element',
       modificationDate: '2020-01-01',
-      modifiedBy: 'Jhonny',
+      modifiedBy: 'Mr Chalky',
     },
     {
       id: 7,
-      name: 'Filter-7',
-      folder: 'Folder-2',
+      name: 'Ravioli-filter',
+      folder: 'Pasta',
       type: 'Data Element',
       modificationDate: '2020-01-01',
-      modifiedBy: 'Sarah',
+      modifiedBy: 'Mr Byrde',
     },
     {
       id: 8,
-      name: 'Filter-8',
-      folder: 'Folder-1',
+      name: 'Capelletti-filter',
+      folder: 'Pasta',
       type: 'Group',
       modificationDate: '2020-01-01',
       modifiedBy: 'Jenkins',
@@ -143,18 +143,33 @@ export class FiltersMainPageComponent implements OnInit {
 
   /* NG MATERIAL DATA TABLE IMPORTS END ***************************************************/
 
-  onFilterTypeSelect(e) {
+  // FOLDER filter
+  onFolderSelect(e) {
     this.dataSource.data = this.FILTER_TABLE_DATA;
-    let type: string = e.target.value;
-    if (type !== 'all') {
+    let folder: string = e.target.value;
+    if (folder !== 'all') {
       this.dataSource.data = this.dataSource.data.filter(
-        (f) => f.type === type
+        (filter) => filter.folder === folder
       );
     } else {
       this.dataSource.data = this.FILTER_TABLE_DATA;
     }
   }
 
+  // TYPE filter
+  onFilterTypeSelect(e) {
+    this.dataSource.data = this.FILTER_TABLE_DATA;
+    let type: string = e.target.value;
+    if (type !== 'all') {
+      this.dataSource.data = this.dataSource.data.filter(
+        (filter) => filter.type === type
+      );
+    } else {
+      this.dataSource.data = this.FILTER_TABLE_DATA;
+    }
+  }
+
+  // NAME filter
   onFilterNameInput(e) {
     this.currentSearchText = e.target.value;
     this.dataSource.data = this.FILTER_TABLE_DATA.filter((record) =>
