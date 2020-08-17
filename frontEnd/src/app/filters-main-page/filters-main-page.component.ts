@@ -19,7 +19,6 @@ export interface FilterRecord {
 })
 export class FiltersMainPageComponent implements OnInit {
   currentSearchText: string = '';
-  filteredFilters: FilterRecord[] = [];
   filtersSearchForm: FormGroup;
   folders = [
     { id: 0, name: 'all' },
@@ -145,18 +144,22 @@ export class FiltersMainPageComponent implements OnInit {
   /* NG MATERIAL DATA TABLE IMPORTS END ***************************************************/
 
   onFilterTypeSelect(e) {
-    console.log(e.target.value);
+    this.dataSource.data = this.FILTER_TABLE_DATA;
+    let type: string = e.target.value;
+    if (type !== 'all') {
+      this.dataSource.data = this.dataSource.data.filter(
+        (f) => f.type === type
+      );
+    } else {
+      this.dataSource.data = this.FILTER_TABLE_DATA;
+    }
   }
 
   onFilterNameInput(e) {
-    // filter filters by filter name
-    // console.log(e.target.value);
     this.currentSearchText = e.target.value;
-    this.filteredFilters = this.FILTER_TABLE_DATA.filter((record) =>
+    this.dataSource.data = this.FILTER_TABLE_DATA.filter((record) =>
       record.name.match(new RegExp(this.currentSearchText, 'i'))
     );
-    // console.log(this.filteredFilters);
-    this.dataSource.data = [...this.filteredFilters];
   }
 
   onFiltersSearchFormSubmit() {

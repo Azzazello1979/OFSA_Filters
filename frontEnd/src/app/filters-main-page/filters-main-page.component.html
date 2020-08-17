@@ -17,9 +17,9 @@
       <select
         formControlName="filterType"
         id="filterType"
-        (click)="onFilterTypeSelect($event)"
+        (change)="onFilterTypeSelect($event)"
       >
-        <option *ngFor="let filter of filterType" [value]="filter.id">{{
+        <option *ngFor="let filter of filterType" [value]="filter.name">{{
           filter.name
         }}</option>
       </select>
