@@ -1,0 +1,10 @@
+.FMPG-wrapper {
+  border: 1px solid green;
+}
+.FMPG-header {
+  padding: 10px;
+  border: 1px solid red;
+}
+.FMPG-dataTable {
+  border: 1px solid brown;
+}

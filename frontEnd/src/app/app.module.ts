@@ -7,6 +7,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterDefinitionPageComponent } from './filter-definition-page/filter-definition-page.component';
 import { FormArrayComponent } from './form-array/form-array.component';
 import { FiltersMainPageComponent } from './filters-main-page/filters-main-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,14 @@ import { FiltersMainPageComponent } from './filters-main-page/filters-main-page.
     FormArrayComponent,
     FiltersMainPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,1 +1,30 @@
-<p>filters-main-page works!</p>
+<div class="FMPG-wrapper">
+  <div class="FMPG-header">
+    <h4>Filters Summary:</h4>
+    <form
+      [formGroup]="filtersSearchForm"
+      (ngSubmit)="onFiltersSearchFormSubmit()"
+    >
+      <!-- -->
+      <label for="folderName">Folder Name: </label>
+      <select formControlName="folderName" id="folderName">
+        <option *ngFor="let folder of folders" [value]="folder.id">{{
+          folder.name
+        }}</option>
+      </select>
+      <!-- -->
+      <label for="filterType">Filter Type: </label>
+      <select formControlName="filterType" id="filterType">
+        <option *ngFor="let filter of filterType" [value]="filter.id">{{
+          filter.name
+        }}</option>
+      </select>
+      <!-- -->
+      <label for="filterName">Filter Name: </label>
+      <input type="text" formControlName="filterName" id="filterName" />
+      <!-- -->
+      <button type="submit">Submit Search</button>
+    </form>
+  </div>
+  <div class="FMPG-dataTable"></div>
+</div>
