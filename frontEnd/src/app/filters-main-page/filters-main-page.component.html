@@ -14,7 +14,11 @@
       </select>
       <!-- -->
       <label for="filterType">Filter Type: </label>
-      <select formControlName="filterType" id="filterType">
+      <select
+        formControlName="filterType"
+        id="filterType"
+        (click)="onFilterTypeSelect($event)"
+      >
         <option *ngFor="let filter of filterType" [value]="filter.id">{{
           filter.name
         }}</option>

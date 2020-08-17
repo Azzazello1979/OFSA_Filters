@@ -22,6 +22,7 @@ export class FiltersMainPageComponent implements OnInit {
   filteredFilters: FilterRecord[] = [];
   filtersSearchForm: FormGroup;
   folders = [
+    { id: 0, name: 'all' },
     { id: 1, name: 'Folder-1' },
     { id: 2, name: 'Folder-2' },
     { id: 3, name: 'Folder-3' },
@@ -30,6 +31,7 @@ export class FiltersMainPageComponent implements OnInit {
   ];
 
   filterType = [
+    { id: 0, name: 'all' },
     { id: 1, name: 'Hierarchy' },
     { id: 2, name: 'Data Element' },
     { id: 3, name: 'Group' },
@@ -141,6 +143,10 @@ export class FiltersMainPageComponent implements OnInit {
   }
 
   /* NG MATERIAL DATA TABLE IMPORTS END ***************************************************/
+
+  onFilterTypeSelect(e) {
+    console.log(e.target.value);
+  }
 
   onFilterNameInput(e) {
     // filter filters by filter name
