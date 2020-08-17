@@ -8,3 +8,6 @@
 .FMPG-dataTable {
   border: 1px solid brown;
 }
+table {
+  width: 100%;
+}
